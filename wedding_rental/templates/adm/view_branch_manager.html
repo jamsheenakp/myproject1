@@ -1,0 +1,56 @@
+{% extends "index.html" %}
+{% block body %}
+<u><b><h1 align="center"> VIEW BRANCH MANAGER</h1></b></u>
+
+
+<form action="/myapp/adm_view_branch_managerpost/" method="post">
+{% csrf_token %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<table class="pull-right">
+  <tr>
+    <td><strong><input name="branch" placeholder="Branch Name" type="text" class="form-control" /> </strong></td>
+    <td> <strong><input name="search" type="submit" value="Search"    class="btn btn-primary" /></strong></td>
+  </tr>
+  </table>
+  
+  <table class="table table-bordered">
+  <tr>
+    <td> <strong>Sl.No </strong></td>
+    <td><strong>Name</strong></td>
+    <td><strong>Place</strong></td>
+     <td><strong>House Name</strong></td>
+      <td><strong>City</strong></td>
+       <td><strong>Dob</strong></td>
+       <td><strong>Phone No</strong></td>
+       <td><strong>Email</strong></td>
+      <td><strong>Image</strong></td>
+     <td></td>
+  </tr>
+
+
+
+      {% for i in data %}
+  <tr>
+    <td>&nbsp;{{ forloop.counter }}</td>
+    <td>&nbsp;{{ i.name }}</td>
+    <td>{{ i.place }}</td>
+    <td>{{ i.house_name }}</td>
+       <td>{{ i.city }}</td>
+    <td>{{ i.dob }}</td>
+      <td>{{ i.phone }}</td>
+      <td>{{ i.email }}</td>
+     <td><img src="{{ i.image }}" width="50" height="50"/></td>
+      <td><a href="/myapp/adm_edit_branchmanager/{{ i.id }}" >Edit</a></td>
+      <td><a href="/myapp/adm_deletemanager/{{ i.id }}" >Delete</a></td>
+  </tr>
+    {% endfor %}
+
+
+</table>
+
+</form>
+{% endblock %}

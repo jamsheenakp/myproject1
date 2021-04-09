@@ -1,0 +1,63 @@
+{% extends "index.html" %}
+{% block body %}
+<U><B><h1 align="center"> EDIT BRANCH MANAGER</h1></B></U>
+<form action="/myapp/adm_updatemanager/" enctype="multipart/form-data" method="post">
+{% csrf_token %}
+<input type="hidden" name="hid" value="{{ data.id }}">
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<table class="table table-hover" >
+    <tr>
+    <td><strong>Branch</strong></td>
+    <td> <strong><select name="branches"  class="btn btn-primary">
+        {% for i in data1 %}
+            <option value="{{ i.id }}">{{ i.branch_name }}</option>
+
+
+        {% endfor %}
+    </select></strong></td>
+  </tr>
+<tr>
+    <td><strong>Manager Name</strong></td>
+    <td>&nbsp;<input name="name" type="text" class="form-control"  pattern="[a-zA-Z]+" value="{{ data.name }}"  required/></td>
+  </tr>
+  <tr>
+    <td><strong>House Name</strong></td>
+    <td>&nbsp;<input name="house_name" type="text" class="form-control"  pattern="[a-zA-Z]+"  value="{{ data.house_name }}" required /></td>
+  </tr>
+  <tr>
+    <td><strong>Place</strong></td>
+    <td>&nbsp;<input name="place" type="text" class="form-control"  pattern="[a-zA-Z]+"  value="{{ data.place }}" required /></td>
+  </tr>
+  <tr>
+    <td><strong>City</strong></td>
+    <td>&nbsp;<input name="city" type="text" class="form-control"  pattern="[a-zA-Z]+"  value="{{ data.city }}" required/></td>
+  </tr>
+  <tr>
+    <td><strong>Phone No</strong></td>
+    <td>&nbsp;<input name="phone_no" type="text"  class="form-control"  pattern="[789][0-9]{9}"  value="{{data.phone }}" required /></td>
+  </tr>
+     <tr>
+    <td><strong>Dob</strong></td>
+    <td>&nbsp;<input name="Dob" type="date" class="form-control"    value="{{ data.dob }}" required/></td>
+  </tr>
+  <tr>
+    <td><strong>Email</strong></td>
+    <td>&nbsp;<input name="email" type="email"  class="form-control"  value="{{ data.email }}"  pattern=" /^[a-z]A-Z0-9.!#$%&'*+/=?^_`{|}~]+@[a-zA-Z0-9-]+)*$/"  required /></td>
+  </tr>
+  <tr>
+    <td><strong>Image</strong></td>
+    <td><input name="image" type="file" class="form-control"   /></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><strong><input name="edit_branch_manager" type="submit"  value="Update" class="btn btn-success" > </strong></td>
+  </tr>
+</table>
+
+</form>
+{% endblock %}

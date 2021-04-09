@@ -1,0 +1,71 @@
+{% extends "index.html" %}
+{% block body %}
+<B><U><h1 align="center"> View Item</h1></U></B>
+
+
+<form action="/myapp/adm_view_item/" method="post">
+{% csrf_token %}
+<BR>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<table class="table table-hover">
+  <tr>
+    <td><strong>Category</strong></td>
+    <td><select  name="category" class="form-control">
+        {% for i in data %}
+          <option value="{{ i.id }}">{{ i.category_name }}</option>
+        {% endfor %}
+
+    </select></td>
+  </tr>
+   <tr>
+   <td><strong>Subcategory</strong></td>
+    <td><select  name="subcategory" class="form-control">
+        {% for i in data1 %}
+          <option value="{{ i.id }}">{{ i.subcategory_name }}</option>
+        {% endfor %}</select></td>
+   <td><input type="submit" value="Search"  class="btn btn-primary" name="button"></td>
+  </tr>
+   <tr>
+   <td><strong>Item</strong></td>
+
+       <td><input type="text" name="item"  class="form-control" required></td>
+          <td><input type="submit" value="Go"  class="btn btn-primary" name="button"></td>
+  </tr>
+</table>
+<table class="table table-hover">
+  <tr>
+    <td> <strong>Sl.No </strong></td>
+    <td><strong>Category</strong></td>
+    <td><strong>Subategory</strong></td>
+     <td><strong>Item name</strong></td>
+      <td><strong>Item price</strong></td>
+       <td><strong>Item quantity</strong></td>
+        <td><strong>Item image</strong></td>
+
+  </tr>
+      {% for i in data2 %}
+  <tr>
+    <td>&nbsp;{{ forloop.counter }}</td>
+    <td>{{ i.SUBCATEGORY_ID.CATEGORY_ID.category_name }}</td>
+        <td>&nbsp;{{ i.SUBCATEGORY_ID.subcategory_name }}</td>
+       <td>{{ i.item_name }}</td>
+       <td>{{ i.item_price }}</td>
+       <td>{{ i.item_quantity }}</td>
+       <td><img src="{{ i.item_image }}" width="50" height="50"/></td>
+      <td><a href="/myapp/adm_edit_item/{{ i.id }}" >Edit</a></td>
+      <td><a href="/myapp/adm_deleteitem/{{ i.id }}" >Delete</a></td>
+      {% endfor %}
+  </tr>
+</table>
+
+
+
+</form>
+{% endblock %}

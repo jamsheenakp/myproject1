@@ -1,0 +1,35 @@
+{% extends "index.html" %}
+{% block body %}
+<b><u><h3 align="center"> ADD CATEGORY</h3></u></b>
+<form action="/myapp/adm_add_category/" onsubmit="return validate()" method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+    <br>
+    <br>
+    <br>
+    <br>
+
+<table class="table table-hover">
+<tr>
+  <tr>
+     <td><strong>Category</strong></td>
+    <td><input name="category" id="category" type="text"   class="form-control" required/></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td colspan="2"><strong><input name="add_category" type="submit"  value="Add"   class="btn btn-success" align="center"></strong></td>
+  </tr>
+</table>
+</form>
+    <script>
+    function validate(){
+        var letters = /^[A-Za-z]+$/;
+        var cat=document.getElementById('category');
+        if(!cat.value.match(letters))
+      {
+      alert('Category name should be alphabet only');
+      return false;
+      }
+      return true;
+    }
+    </script>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "index.html" %}
+{% block body %}
+<u><b><H1 align="center" > Edit Branch</H1></b></u>
+
+<form action="/myapp/adm_updatetbranch/" method="post">
+{% csrf_token %}
+<input type="hidden" name="hid" value="{{ data.id }}">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+
+<table class="table table-hover">
+
+  <tr>
+    <td><strong>Branch Name</strong></td>
+    <td>&nbsp;<input name="branch_name" type="text" pattern="[a-zA-Z]+" value="{{ data.branch_name }}" required/></td>
+  </tr>
+  <tr>
+    <td><strong>Place</strong></td>
+    <td>&nbsp;<input name="place" type="text" required value="{{ data.branch_place}}" /></td>
+  </tr>
+  <tr>
+    <td><strong>City</strong></td>
+    <td>&nbsp;<input name="city" type="text" value="{{ data.branch_city }}" required/></td>
+  </tr>
+  <tr>
+    <td><strong>Phone No</strong></td>
+    <td>&nbsp;<input name="phone_no" type="text"  pattern="[789][0-9]{9}"  value="{{ data.branch_phone }}" required /></td>
+  </tr>
+  <tr>
+    <td><strong>Image</strong></td>
+    <td><input name="image" type="file" /></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><strong><input name="update_branch" type="submit"  value="Update"   class="btn btn-success" ></strong></td>
+  </tr>
+</table>
+
+
+
+</form>
+{% endblock %}

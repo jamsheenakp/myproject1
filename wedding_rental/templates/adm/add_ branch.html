@@ -1,0 +1,43 @@
+{% extends "index.html" %}
+{% block body %}
+   <b> <u><h3 align="center" > ADD BRANCH</h3></u></b>
+<form action="/myapp/adm_add_branch/" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <br>
+    <br>
+<table  class="table table-hover">
+
+  <tr>
+    <td><strong>Branch Name</strong></td>
+    <td>&nbsp;<input name="branch_name" type="text" class="form-control"    required/></td>
+  </tr>
+  <tr>
+    <td><strong>Place</strong></td>
+    <td>&nbsp;<input name="place" type="text" class="form-control"   required /></td>
+  </tr>
+  <tr>
+    <td><strong>City</strong></td>
+    <td>&nbsp;<input name="city" type="text" class="form-control"   required/></td>
+  </tr>
+  <tr>
+    <td><strong>Phone No</strong></td>
+    <td>&nbsp;<input name="phone_no" type="text" class="form-control"   required /></td>
+  </tr>
+  <tr>
+    <td><strong>Image</strong></td>
+    <td><input name="image" type="file" class="form-control"  required/></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><strong><input name="add_branch" type="submit"  class="btn btn-success" value="Add" ></strong></td>
+  </tr>
+</table>
+
+
+</form>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "index.html" %}
+{% block body %}
+<u><b><h3 align="center"> VIEW BRANCH</h3></b></u>
+
+
+<form action="/myapp/adm_view_branch/" method="post">
+{% csrf_token %}
+<br>
+<br>
+<table class="pull-right">
+  <tr>
+    <td><strong><input name="branch_name" placeholder="Branch Name" type="text" class="form-control" /> </strong></td>
+    <td> <strong><input name="search" type="submit" value="Search"  class="btn btn-primary"  /></strong></td>
+  </tr>
+</table>
+<br>
+<table class="table table-bordered">
+  <tr>
+    <td> <strong>Sl.No </strong></td>
+    <td><strong>Branch name</strong></td>
+    <td><strong>Place</strong></td>
+    <td><strong>City</strong></td>
+    <td><strong>Phone no</strong></td>
+    <td><strong>Image</strong></td>
+
+
+  </tr>
+   {% for i in data %}
+  <tr>
+    <td>&nbsp;{{ forloop.counter }}</td>
+    <td>&nbsp;{{ i.branch_name }}</td>
+    <td>{{ i.branch_place }}</td>
+    <td>{{ i.branch_city }}</td>
+    <td>{{ i.branch_phone }}</td>
+     <td><img src="{{ i.branch_image }}" width="50" height="50"/></td>
+      <td><a href="/myapp/adm_edit_branch/{{ i.id }}" >Edit</a></td>
+      <td><a href="/myapp/adm_deletebranch/{{ i.id }}" >Delete</a></td>
+  </tr>
+    {% endfor %}
+
+</table>
+
+
+</form>
+{% endblock %}

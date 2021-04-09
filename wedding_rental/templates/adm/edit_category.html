@@ -1,0 +1,46 @@
+{% extends "index.html" %}
+{% block body %}
+<h1 align="center"> Edit Category</h1>
+
+<form action="/myapp/adm_updatecategory/"   onsubmit="return validate()"  method="post">
+{% csrf_token %}
+<input type="hidden" name="hid" value="{{ data.id }}">
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+
+
+<table class="table table-hover">
+
+  <tr>
+     <td><strong>Category</strong></td>
+    <td>&nbsp;<input name="category"   id="category"    type="text"  value="{{ data.category_name }}" required/></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><strong><input name="update_category" type="submit"  value="Update"   class="btn btn-success"> </strong></td>
+  </tr>
+</table>
+</form>
+     <script>
+    function validate(){
+        var letters = /^[A-Za-z]+$/;
+        var cate=document.getElementById('category');
+        if(!cate.value.match(letters))
+      {
+      alert('Category name should be alphabet only');
+      return false;
+      }
+      return true;
+    }
+</script>
+
+
+{% endblock %}

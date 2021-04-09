@@ -1,0 +1,58 @@
+{% extends "index.html" %}
+{% block body %}
+<b><u><h1 align="center"> Edit Subcategory</h1></u></b>
+
+<form action="/myapp/adm_updatesubcategory/"  onsubmit="return validate()" method="post">
+{% csrf_token %}
+<input type="hidden" name="hid" value="{{ data.id }}">
+<br>
+<br>
+<br>
+<br>
+<table class="table table-hover">
+  <tr>
+    <td><strong>Category </strong></td>
+   <td> <strong><select name="category"  class="btn btn-primary">
+        {% for i in data1 %}
+            <option value="{{ i.id }}">{{ i.category_name }}</option>
+
+
+        {% endfor %}
+    </select></strong></td>
+  </tr>
+
+
+
+
+  <tr>
+     <td><strong>Subcategory</strong></td>
+    <td>&nbsp;<input name="subcategory" id="subcategory"    type="text"  value="{{ data.subcategory_name }}" required/></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><strong><input name="update_subcategory" type="submit"   class="btn btn-success"  value="update" ></strong></td>
+  </tr>
+</table>
+
+
+
+
+</form>
+
+    <script>
+    function validate(){
+         var letters = /^[A-Za-z]+$/;
+        var cat=document.getElementById('subcategory');
+        if(!cat.value.match(letters))
+      {
+      alert('Subcategory name should be alphabet only');
+      return false;
+      }
+      return true;
+    }
+    </script>
+
+
+
+
+{% endblock %}

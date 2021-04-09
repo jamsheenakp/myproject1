@@ -1,0 +1,30 @@
+{% extends "index.html" %}
+{% block body %}
+<b><u><h1 align="center">View Category</h1></u></b>
+
+<form action="/myapp/adm_view_category/" method="post">
+{% csrf_token %}
+
+
+<br>
+<br>
+<br>
+<table class="table table-bordered">
+  <tr>
+    <td> <strong>Sl.No </strong></td>
+    <td><strong>Category</strong></td>
+
+  </tr>
+
+
+    {% for i in data %}
+  <tr>
+    <td>&nbsp;{{ forloop.counter }}</td>
+    <td>&nbsp;{{ i.category_name }}</td>
+        <td><a href="/myapp/adm_edit_category/{{ i.id }}" >Edit</a></td>
+      <td><a href="/myapp/adm_deletecategory/{{ i.id }}" >Delete</a></td>
+      {% endfor %}
+</table>
+</form>
+{% endblock %}
+

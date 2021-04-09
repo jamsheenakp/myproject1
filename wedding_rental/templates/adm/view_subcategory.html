@@ -1,0 +1,41 @@
+{% extends "index.html" %}
+{% block body %}
+<U><B><h1 align="center"> View Subcategory</h1></B></U>
+
+<form action="/myapp/adm_view_subcategory/" method="post">
+{% csrf_token %}
+<br>
+<br>
+<br>
+<br>
+<table class="pull-right">
+  <tr>
+     <td><strong>Category</strong></td>
+    <td><select  name="category">
+        {% for i in data1 %}
+          <option value="{{ i.id }}">{{ i.category_name }}</option>
+        {% endfor %}
+
+    </select></td>
+   <td><strong><input name="add_subcategory" type="submit"  value="Search"   class="btn btn-primary"></strong></td>
+  </tr>
+</table>
+<table  class="table table-bordered">
+  <tr>
+    <td> <strong>Sl.No </strong></td>
+    <td><strong>Category</strong></td>
+    <td><strong>Subategory</strong></td>
+
+  </tr>
+
+    {% for i in data %}
+  <tr>
+    <td>&nbsp;{{ forloop.counter }}</td>
+    <td>{{ i.CATEGORY_ID.category_name }}</td>
+        <td>&nbsp;{{ i.subcategory_name }}</td>
+         <td><a href="/myapp/adm_edit_subcategory/{{ i.id }}">Edit</a></td>
+      <td><a href="/myapp/adm_deletesubcategory/{{ i.id }}" >Delete</a></td>
+      {% endfor %}
+</table>
+</form>
+{% endblock %}

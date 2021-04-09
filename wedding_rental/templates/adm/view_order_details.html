@@ -1,0 +1,40 @@
+{% extends "index.html" %}
+{% block body %}
+<h1 align="center">View Order Details</h1>
+
+
+<form action="" method="get">
+<table class="pull-right">
+  <tr>
+    <td><strong><input name="from date" placeholder="from " type="text" class="form-control" /> </strong></td>
+    <td> <strong><input name="date" type="date"   class="btn btn-primary"   /></strong></td></tr>
+   <tr>
+    <td><strong><input name="to date" placeholder="to" type="text" class="form-control" /> </strong></td>
+    <td> <strong><input name="date" type="date"  class="btn btn-primary"   /></strong></td><
+</table>
+<table  class="table table-bordered">
+  <tr>
+    <td> <strong>Sl.No </strong></td>
+    <td><strong>Customer</strong></td>
+    <td><strong>Date</strong></td>
+     <td><strong>Total Amount</strong></td>
+      <td><strong>Return Date</strong></td>
+       <td><strong>No.Of Days</strong></td>
+       <td><a href="purchased_item.html" >purchased item</a></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+     <td>&nbsp;</td>
+      <td>&nbsp;</td>
+       <td>&nbsp;</td>
+        <td>&nbsp;</td>
+         <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          
+</tr></table>
+
+
+
+
+</form>
+{% endblock %}

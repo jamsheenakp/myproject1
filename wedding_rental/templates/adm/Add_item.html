@@ -1,0 +1,97 @@
+{% extends "index.html" %}
+{% block body %}
+<B><U><h1 align="center"> Add Item</h1></U></B>
+
+<form action=" /myapp/adm_add_Add_item/"  onsubmit="return validate()" method="post" enctype="multipart/form-data">
+{% csrf_token %}
+
+<br>
+<br>
+<br>
+<BR>
+
+<table class="table table-bordered">
+  <tr>
+    <td><strong>Category</strong></td>
+    <td><select  name="category"  class="btn btn-primary">
+         {% for i in data1 %}
+          <option value="{{ i.id }}">{{ i.category_name }}</option>
+         {% endfor %}
+    </select></td>
+  </tr>
+  <tr>
+   <td><strong>Subcategory</strong></td>
+    <td><select  name="subcategory"  class="btn btn-primary">
+        {% for i in data %}
+          <option value="{{ i.id }}">{{ i.subcategory_name }}</option>
+        {% endfor %}</select></td>
+  </tr>
+  </table>
+
+<table class="table table-hover">
+
+
+  <tr>
+     <td><strong>Item name</strong></td>
+    <td>&nbsp;<input name="item_name"   id="name"  type="text"   class="form-control"   required/></td>
+  </tr>
+  <tr>
+     <td><strong>Item price</strong></td>
+    <td>&nbsp;<input name="item_price"  id="price"  type="text"   class="form-control"  required/></td>
+  </tr>
+  <tr>
+     <td><strong>Item quantity</strong></td>
+    <td>&nbsp;<input name="item_quantity"  id="qty" type="text" class="form-control"  required/></td>
+  </tr>
+  <tr>
+     <td><strong>Item image</strong></td>
+    <td>&nbsp;<input name="item_image" type="file"  class="form-control"  required/></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><strong><input name="add_item" type="submit"  class="btn btn-success"  value="Add" ></strong></td>
+  </tr>
+
+</table></form>
+    <script>
+    function validate(){
+        var letters = /^[A-Za-z]+$/;
+        var cate=document.getElementById('name');
+        if(!cate.value.match(letters))
+      {
+      alert('Item name should be alphabet only');
+      return false;
+      }
+
+
+
+        var numbers = /^[0-9]+$/;
+        var cat=document.getElementById('price');
+        if(!cat.value.match(numbers))
+        {
+        alert('Item price should be numbers only');
+
+        return false;
+        }
+
+
+
+        var numbers = /^[0-9]+$/;
+        var cati=document.getElementById('qty');
+        if(!cati.value.match(numbers))
+        {
+            alert('Item quantity should be numbers only');
+
+        return false;
+        }
+        return true;
+        }
+
+    </script>
+
+
+
+
+
+
+{% endblock %}

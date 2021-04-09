@@ -1,0 +1,27 @@
+{% extends "index.html" %}
+{% block body %}
+<h1 align="center">View Rating</h1>
+
+<form action="" method="get">
+
+<table class="pull-right">
+ <tr>
+    <td><strong><input name="item name"  placeholder="Item Name" type="text" class="form-control" /> </strong></td>
+    <td> <strong><input name="search" type="submit" value="search"     class="btn btn-primary" /></strong></td>
+  </tr>
+</table>
+<table  class="table table-bordered">
+  <tr>
+    <td> <strong>Sl.No </strong></td>
+     <td><strong>Item name</strong></td>
+    <td><strong>Customer Name</strong></td>
+    <td><strong>Rating</strong></td>
+     </tr>
+  <tr>
+    <td>&nbsp;</td>
+     <td>&nbsp;</td>
+      <td>&nbsp;</td>
+       <td>&nbsp;</td></tr></table>
+
+</form>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "index.html" %}
+{% block body %}
+<u><b><h1 align="center"> Add Subcategory</h1></b></u>
+
+<form action="/myapp/adm_add_subcategory/" onsubmit="return validate()" method="post" enctype="multipart/form-data">
+{% csrf_token %}
+
+<br>
+<br>
+<br>
+<br>
+<table  class="table table-hover">
+<tr>
+
+
+     <td><strong>Category</strong></td>
+    <td><select  name="category">
+
+        {% for i in data %}
+          <option value="{{ i.id }}">{{ i.category_name }}</option>
+        {% endfor %}
+
+
+    </select></td>
+  </tr>
+
+    <tr>
+     <td><strong>Subcategory</strong></td>
+    <td>&nbsp;<input name="subcategory" id="subcategory" type="text" required/></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><strong><input name="add_subcategory" type="submit"  value="Add"  class="btn btn-success"  ></strong></td>
+  </tr>
+</table>
+</form>
+    <script>
+    function validate(){
+         var letters = /^[A-Za-z]+$/;
+        var cat=document.getElementById('subcategory');
+        if(!cat.value.match(letters))
+      {
+      alert('Subcategory name should be alphabet only');
+      return false;
+      }
+      return true;
+    }
+    </script>
+
+
+{% endblock %}
